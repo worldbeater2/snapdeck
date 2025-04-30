@@ -1,4 +1,5 @@
 "use client";
+import { CardSpotlight } from "@/components/ui/card-spotlight";
 import { FollowerPointerCard } from "@/components/ui/following-pointer";
 
 
@@ -26,7 +27,7 @@ export default function Features() {
             </div>
           </div>
           <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3">
-          <div className="rounded-lg border-main/70 border bg-white p-10 shadow-sm transition-all hover:shadow-md">
+          <CardSpotlight className="rounded-lg border-main/70 border bg-white p-10 shadow-sm transition-all hover:shadow-md">
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="rounded-full bg-purple-100 p-3">
                   <div className="text-3xl">🧠</div>
@@ -37,8 +38,8 @@ export default function Features() {
                   structured flashcards — no formatting, no fluff.
                 </p>
               </div>
-            </div>
-            <div className="rounded-lg border-main/70 border bg-white p-10 shadow-sm transition-all hover:shadow-md">
+            </CardSpotlight>
+            <CardSpotlight className="rounded-lg border-main/70 border bg-white p-10 shadow-sm transition-all hover:shadow-md">
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="rounded-full bg-purple-100 p-3">
                   <div className="text-3xl">📚</div>
@@ -49,8 +50,8 @@ export default function Features() {
                   summaries you can actually remember.
                 </p>
               </div>
-            </div>
-            <div className="rounded-lg border-main/70 border bg-white p-10 shadow-sm transition-all hover:shadow-md">
+            </CardSpotlight>
+            <CardSpotlight className="rounded-lg border-main/70 border bg-white p-10 shadow-sm transition-all hover:shadow-md">
               <div className="flex flex-col items-center space-y-4 text-center">
                 <div className="rounded-full bg-purple-100 p-3">
                   <div className="text-3xl">🎯</div>
@@ -61,7 +62,7 @@ export default function Features() {
                   to your level, so you retain faster and learn smarter.
                 </p>
               </div>
-            </div>
+            </CardSpotlight>
           </div>
         </div>
       </section>
