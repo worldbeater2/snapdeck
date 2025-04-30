@@ -1,8 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
-
-
-
-
+@theme inline {
+  --color-main: #9208f1;
+  --font-manrope: "Manrope", sans-serif;
+}

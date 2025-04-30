@@ -1,38 +1,19 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Brain, BookOpen, FileText, Target } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Brain, BookOpen, FileText, Target } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import Footer from "../sections/footer";
+import Navbar from "../sections/Navbar";
+import Features from "../sections/Features";
+import { FlipWords } from "@/components/ui/flip-words";
 
 export default function LandingPage() {
+  const words = [" Smarter", " Deeper", " Refined", " Boundless", " Informed"];
+
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
-        <Link href="/" className="flex items-center justify-center object-cover">
-          
-          <Image className="w-32 h-7" src="/13.png" alt="Logo"  width={100} height={60} /> 
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link href="#features" className="text-sm font-medium hover:underline underline-offset-4">
-            Features
-          </Link>
-          <Link href="#how-it-works" className="text-sm font-medium hover:underline underline-offset-4">
-            How It Works
-          </Link>
-          <Link href="#pricing" className="text-sm font-medium hover:underline underline-offset-4">
-            Pricing
-          </Link>
-          <Link href="#faq" className="text-sm font-medium hover:underline underline-offset-4"> 
-            FAQ
-          </Link>
-        </nav>
-        <Button asChild className="ml-4">
-          <Link href="#get-started">Get Started</Link>
-        </Button>
-      </header>
-
-
-
+      <Navbar />
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-purple-600 to-purple-700">
           <div className="container px-4 md:px-6 mx-auto max-w-7xl">
@@ -40,18 +21,35 @@ export default function LandingPage() {
               <div className="flex flex-col justify-center space-y-4 text-white">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Unlock Smarter Learning. Faster.
+                    Unlock
+                    <span>
+                      {" "}
+                      <FlipWords
+                        duration={1200}
+                        className="text-white"
+                        words={words}
+                      />
+                    </span>{" "}
+                    Learning. Faster.
                   </h1>
                   <p className="max-w-[600px] text-white/90 md:text-xl">
-                    GoDecks is your AI-powered study assistant that turns any topic into flashcards, summaries, and
-                    quizzes — in seconds. Study less, retain more, level up faster.
+                    SnapDecks is your AI-powered study assistant that turns any
+                    topic into flashcards, summaries, and quizzes — in seconds.
+                    Study less, retain more, level up faster.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                  <Button size="lg" className="bg-white cursor-pointer text-purple-700 hover:bg-white/90">
+                  <Button
+                    size="lg"
+                    className="bg-white cursor-pointer text-purple-700 hover:bg-white/90"
+                  >
                     Get Started Free
                   </Button>
-                  <Button size="lg" variant="outline" className=" cursor-pointer hover:text-purple-700 text-purple-700 hover:bg-white/90 ">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className=" cursor-pointer hover:text-purple-700  hover:bg-white/90 "
+                  >
                     Try a Demo
                   </Button>
                 </div>
@@ -67,46 +65,60 @@ export default function LandingPage() {
                       MN
                     </div>
                   </div>
-                  <div className="text-sm text-white/90">Join 10,000+ students already learning smarter</div>
+                  <div className="text-sm text-white/90">
+                    Join 10,000+ students already learning smarter
+                  </div>
                 </div>
               </div>
               <div className="relative h-[400px] lg:h-[600px] rounded-xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center font-manrope">
                   <div className="w-[80%] bg-white rounded-lg shadow-lg p-4 space-y-4">
                     <div className="flex items-center gap-2">
                       <BookOpen className="h-5 w-5 text-purple-600" />
                       <div className="text-sm font-medium">Study Topic</div>
                     </div>
-                    <div className="relative ">
+                    <div className="relative  font-manrope">
                       <Input
-                        className="pl-3 pr-10 py-6 text-base"
+                        className="pl-3 pr-10 py-6 border-main/60 text-base"
                         placeholder="Enter any topic to study..."
                         defaultValue="Photosynthesis process"
                       />
-                      <Button size="sm" className="absolute right-2 top-2 cursor-pointer">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="absolute right-2 top-2 hover:bg-main/40 border-main/50 text-gray-500 hover:text-main hover:border-none  cursor-pointer"
+                      >
                         Generate
                       </Button>
-
                     </div>
+
                     <div className="grid grid-cols-3 gap-2 pt-2">
-                      <div className="bg-purple-100 hover:cursor-pointer rounded p-2 text-center text-xs font-medium text-purple-700 flex flex-col items-center gap-1 ">
+                      <div className="bg-purple-100 hover:cursor-pointer rounded  p-2 text-center text-xs font-medium text-purple-700 flex flex-col items-center gap-1 ">
                         <FileText className="h-4 w-4" />
                         Summary
                       </div>
+
                       <div className="bg-purple-100 rounded hover:cursor-pointer p-2 text-center text-xs font-medium text-purple-700 flex flex-col items-center gap-1">
-                        <div className="h-4 cursor-pointer w-4 flex items-center justify-center ">🃏</div>
+                        <div className="h-4 cursor-pointer w-4 flex items-center justify-center ">
+                          🃏
+                        </div>
                         Flashcards
                       </div>
+
                       <div className="bg-purple-100 hover:cursor-pointer rounded p-2 text-center text-xs font-medium text-purple-700 flex flex-col items-center gap-1">
                         <Target className="h-4 w-4" />
                         Quiz
                       </div>
                     </div>
+
                     <div className="bg-gray-100 p-3 rounded-lg">
-                      <div className="text-xs font-medium mb-1">Quick Summary</div>
+                      <div className="text-xs font-medium mb-1">
+                        Quick Summary
+                      </div>
                       <div className="text-xs text-gray-500">
-                        Photosynthesis is the process where green plants use sunlight to synthesize foods with carbon
-                        dioxide and water, producing oxygen as a byproduct...
+                        Photosynthesis is the process where green plants use
+                        sunlight to synthesize foods with carbon dioxide and
+                        water, producing oxygen as a byproduct...
                       </div>
                     </div>
                   </div>
@@ -121,69 +133,22 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6 mx-auto max-w-7xl">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-700">Features</div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Study Smarter, Not Harder</h2>
-                <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  GoDecks transforms how you learn with powerful AI tools designed to maximize retention and minimize
-                  study time.
-                </p>
-              </div>
-            </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3">
-              <div className="rounded-lg border bg-white p-8 shadow-sm transition-all hover:shadow-md">
-                <div className="flex flex-col items-center space-y-4 text-center">
-                  <div className="rounded-full bg-purple-100 p-3">
-                    <div className="text-3xl">🧠</div>
-                  </div>
-                  <h3 className="text-xl font-bold">AI-Generated Flashcards</h3>
-                  <p className="text-gray-500">
-                    Just type your topic. GoDecks instantly creates beautiful, structured flashcards — no formatting, no
-                    fluff.
-                  </p>
-                </div>
-              </div>
-              <div className="rounded-lg border bg-white p-8 shadow-sm transition-all hover:shadow-md">
-                <div className="flex flex-col items-center space-y-4 text-center">
-                  <div className="rounded-full bg-purple-100 p-3">
-                    <div className="text-3xl">📚</div>
-                  </div>
-                  <h3 className="text-xl font-bold">Smart Summaries</h3>
-                  <p className="text-gray-500">
-                    Condense entire chapters or documents into short, digestible summaries you can actually remember.
-                  </p>
-                </div>
-              </div>
-              <div className="rounded-lg border bg-white p-8 shadow-sm transition-all hover:shadow-md">
-                <div className="flex flex-col items-center space-y-4 text-center">
-                  <div className="rounded-full bg-purple-100 p-3">
-                    <div className="text-3xl">🎯</div>
-                  </div>
-                  <h3 className="text-xl font-bold">Auto Quizzes</h3>
-                  <p className="text-gray-500">
-                    Practice makes perfect. GoDecks generates quizzes that adapt to your level, so you retain faster and
-                    learn smarter.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Features />
 
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
-          <div className="container px-4 md:px-6 mx-auto max-w-7xl">
+          <div className="container px-4 md:px-6 mx-auto max-w-7sxl">
             <div className="grid gap-10 lg:grid-cols-2 items-center">
               <div className="space-y-4">
                 <div className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-700">
                   AI-Powered Learning
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Go further with every card.</h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                  Go further with every card.
+                </h2>
                 <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Our advanced AI understands what you're studying and creates personalized learning materials that help
-                  you master any subject faster than traditional methods.
+                  Our advanced AI understands what you're studying and creates
+                  personalized learning materials that help you master any
+                  subject faster than traditional methods.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-2">
                   <Button size="lg" asChild>
@@ -200,7 +165,9 @@ export default function LandingPage() {
                     </div>
                     <div className="h-[1px] w-full bg-gray-200 mb-4"></div>
                     <div className="text-center py-8">
-                      <div className="text-lg font-medium">What are the primary products of photosynthesis?</div>
+                      <div className="text-lg font-medium">
+                        What are the primary products of photosynthesis?
+                      </div>
                     </div>
                     <div className="absolute bottom-4 right-4">
                       <Button variant="ghost" size="sm">
@@ -216,7 +183,10 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section id="get-started" className="w-full py-12 md:py-24 lg:py-32 bg-purple-700 text-white">
+        <section
+          id="get-started"
+          className="w-full py-12 md:py-24 lg:py-32 bg-purple-700 text-white"
+        >
           <div className="container px-4 md:px-6 mx-auto max-w-7xl">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -224,7 +194,8 @@ export default function LandingPage() {
                   Ready to transform how you study?
                 </h2>
                 <p className="mx-auto max-w-[700px] text-white/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of students who are studying smarter, not harder, with GoDecks.
+                  Join thousands of students who are studying smarter, not
+                  harder, with SnapDecks.
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
@@ -234,7 +205,10 @@ export default function LandingPage() {
                     placeholder="Enter your email"
                     className="max-w-lg flex-1 bg-white text-gray-900"
                   />
-                  <Button type="submit" className="bg-white text-purple-700 hover:bg-white/90">
+                  <Button
+                    type="submit"
+                    className="bg-white text-purple-700 hover:bg-white/90"
+                  >
                     Get Started Free
                   </Button>
                 </form>
@@ -256,7 +230,9 @@ export default function LandingPage() {
                 <div className="inline-block rounded-lg bg-purple-100 px-3 py-1 text-sm text-purple-700">
                   Testimonials
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Students love GoDecks</h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                  Students love SnapDecks
+                </h2>
                 <div className="grid gap-4">
                   <div className="rounded-lg border p-4">
                     <div className="flex items-start gap-4">
@@ -265,10 +241,13 @@ export default function LandingPage() {
                       </div>
                       <div>
                         <div className="font-medium">Jessica D.</div>
-                        <div className="text-sm text-gray-500">Medical Student</div>
+                        <div className="text-sm text-gray-500">
+                          Medical Student
+                        </div>
                         <div className="mt-2 text-sm">
-                          "GoDecks has completely changed how I study for med school. I can quickly create flashcards
-                          for complex topics and the quizzes help me identify weak areas."
+                          "SnapDecks has completely changed how I study for med
+                          school. I can quickly create flashcards for complex
+                          topics and the quizzes help me identify weak areas."
                         </div>
                       </div>
                     </div>
@@ -280,10 +259,13 @@ export default function LandingPage() {
                       </div>
                       <div>
                         <div className="font-medium">Thomas K.</div>
-                        <div className="text-sm text-gray-500">Computer Science Major</div>
+                        <div className="text-sm text-gray-500">
+                          Computer Science Major
+                        </div>
                         <div className="mt-2 text-sm">
-                          "The summaries GoDecks creates are incredible. It takes my textbook chapters and condenses
-                          them into exactly what I need to know."
+                          "The summaries GoDecks creates are incredible. It
+                          takes my textbook chapters and condenses them into
+                          exactly what I need to know."
                         </div>
                       </div>
                     </div>
@@ -293,42 +275,31 @@ export default function LandingPage() {
               <div className="grid gap-4 lg:gap-8 grid-cols-2 lg:grid-cols-1">
                 <div className="rounded-lg border bg-gray-50 p-6 text-center">
                   <div className="text-4xl font-bold text-purple-700">94%</div>
-                  <div className="mt-2 text-sm text-gray-500">of users report improved test scores</div>
+                  <div className="mt-2 text-sm text-gray-500">
+                    of users report improved test scores
+                  </div>
                 </div>
                 <div className="rounded-lg border bg-gray-50 p-6 text-center">
                   <div className="text-4xl font-bold text-purple-700">50%</div>
-                  <div className="mt-2 text-sm text-gray-500">reduction in study time</div>
+                  <div className="mt-2 text-sm text-gray-500">
+                    reduction in study time
+                  </div>
                 </div>
                 <div className="rounded-lg border bg-gray-50 p-6 text-center col-span-2 lg:col-span-1">
-                  <div className="text-4xl font-bold text-purple-700">10,000+</div>
-                  <div className="mt-2 text-sm text-gray-500">active students</div>
+                  <div className="text-4xl font-bold text-purple-700">
+                    10,000+
+                  </div>
+                  <div className="mt-2 text-sm text-gray-500">
+                    active students
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <footer className="w-full py-6 border-t">
-        <div className="container flex flex-col md:flex-row items-center justify-between gap-4 px-4 md:px-6 mx-auto max-w-7xl">
-          <div className="flex items-center gap-2">
-            <Brain className="h-5 w-5 text-purple-600" />
-            <span className="font-medium">GoDecks</span>
-            <span className="text-xs text-gray-500">Cards that know what you need.</span>
-          </div>
-          <nav className="flex gap-4 sm:gap-6">
-            <Link href="#" className="text-xs hover:underline underline-offset-4">
-              Terms
-            </Link>
-            <Link href="#" className="text-xs hover:underline underline-offset-4">
-              Privacy
-            </Link>
-            <Link href="#" className="text-xs hover:underline underline-offset-4">
-              Contact
-            </Link>
-          </nav>
-          <div className="text-xs text-gray-500">© {new Date().getFullYear()} GoDecks. All rights reserved.</div>
-        </div>
-      </footer>
+
+      <Footer />
     </div>
-  )
+  );
 }
