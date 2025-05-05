@@ -43,6 +43,7 @@ export function LoginForm({
             value={email}
             onChange={(e) => onEmailChange(e.target.value)}
             required
+            className="border border-gray-300 rounded-md focus:ring focus:ring-main/50"
           />
         </div>
         <div className="grid gap-3">
@@ -61,12 +62,13 @@ export function LoginForm({
             value={password}
             onChange={(e) => onPasswordChange(e.target.value)}
             required
+            className="border border-gray-300 rounded-md focus:ring focus:ring-main/50"
           />
         </div>
 
         <Button
           type="submit"
-          className="w-full cursor-pointer bg-main hover:bg-main/50 text-white"
+          className="w-full cursor-pointer bg-main/85 hover:bg-main text-white"
         >
           Login
         </Button>
@@ -81,7 +83,7 @@ export function LoginForm({
           type="button"
           onClick={onGoogleLogin}
           variant="outline"
-          className="w-full cursor-pointer hover:bg-main/50 hover:text-base-300"
+          className="w-full cursor-pointer  border-main/20 hover:bg-main/90 hover:text-base-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

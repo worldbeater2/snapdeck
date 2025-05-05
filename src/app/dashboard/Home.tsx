@@ -247,11 +247,11 @@ export default function DashboardMainApp() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="rounded-full h-8 w-8"
+                    className="rounded-full h-8 w-8 cursor-pointer hover:bg-main/90 hover:text-white"
                   >
                     <ChevronRight className="h-4 w-4" />
                   </Button>
-                </DropdownMenuTrigger>
+                </DropdownMenuTrigger> 
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
