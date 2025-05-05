@@ -39,7 +39,7 @@ export default function Testimonial() {
                       Computer Science Major
                     </div>
                     <div className="mt-2 text-sm">
-                      "The summaries GoDecks creates are incredible. It takes my
+                      "The summaries SnapDecks creates are incredible. It takes my
                       textbook chapters and condenses them into exactly what I
                       need to know."
                     </div>
