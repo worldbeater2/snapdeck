@@ -8,7 +8,7 @@ export default function Navbar() {
       <Link href="/" className="flex items-center justify-center object-cover">
         <Image
           className="w-32 h-7"
-          src="/13.png"
+          src="assets/13.png"
           alt="Logo"
           width={100}
           height={60}
