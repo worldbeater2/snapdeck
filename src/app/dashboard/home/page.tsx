@@ -53,73 +53,14 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-
+import { useRouter } from "next/navigation";
 import { NavMain } from "@/components/nav-main";
 
 export default function DashboardMainApp() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("overview");
 
-  const navItems = [
-    {
-      title: "Dashboard",
-      url: "/dashboard",
-      icon: Home,
-      isActive: true,
-    },
-    {
-      title: "My Decks",
-      url: "/dashboard/decks",
-      icon: Layers,
-      items: [
-        {
-          title: "All Decks",
-          url: "/dashboard/decks",
-        },
-        {
-          title: "Favorites",
-          url: "/dashboard/decks/favorites",
-        },
-        {
-          title: "Recent",
-          url: "/dashboard/decks/recent",
-        },
-      ],
-    },
-    {
-      title: "Builder",
-      url: "/dashboard/builder",
-      icon: Blocks,
-      items: [
-        {
-          title: "Active Sessions",
-          url: "/dashboard/study/active",
-        },
-        {
-          title: "Completed",
-          url: "/dashboard/study/completed",
-        },
-        {
-          title: "Schedule",
-          url: "/dashboard/study/schedule",
-        },
-      ],
-    },
-    {
-      title: "Study History",
-      url: "/dashboard/history",
-      icon: History,
-    },
-    {
-      title: "Progress",
-      url: "/dashboard/progress",
-      icon: BarChart2,
-    },
-    {
-      title: "Settings",
-      url: "/dashboard/settings",
-      icon: Settings,
-    },
-  ];
+
 
   const recentDecks = [
     {
@@ -200,71 +141,9 @@ export default function DashboardMainApp() {
     streakDays: 7,
   };
   return (
-    <SidebarProvider>
+
       <div className="flex h-screen bg-gray-50 font-manrope">
-        <Sidebar className="border-r border-gray-200">
-          <SidebarHeader className="border-b border-gray-200 px-3 py-2">
-            <Link href="/dashboard" className="flex items-center gap-2 px-2">
-              <div className="relative"></div>
-              <Image
-                className="w-32 h-7"
-                src="/13.png"
-                alt="Logo"
-                width={100}
-                height={60}
-              />
-            </Link>
-            <div className="relative mt-3">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500" />
-              <Input
-                type="search"
-                placeholder="Search..."
-                className="w-full bg-gray-100 pl-9 py-2 text-sm rounded-lg border-transparent focus:border-purple-500"
-              />
-            </div>
-          </SidebarHeader>
-
-          <SidebarContent>
-            <NavMain items={navItems} />
-          </SidebarContent>
-
-          <SidebarFooter className="border-t border-gray-200 p-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src="/placeholder-user.jpg" alt="User" />
-                  <AvatarFallback className="bg-purple-100 text-purple-700">
-                    JD
-                  </AvatarFallback>
-                </Avatar>
-                <div className="text-sm">
-                  <div className="font-medium">Jessica Doe</div>
-                  <div className="text-xs text-gray-500">Premium Plan</div>
-                </div>
-              </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full h-8 w-8 cursor-pointer hover:bg-main/90 hover:text-white"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger> 
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Subscription</DropdownMenuItem>
-                  <DropdownMenuItem>Settings</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Log out</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </SidebarFooter>
-        </Sidebar>
+       
 
         <div className="flex-1 flex flex-col overflow-hidden">
           <header className="bg-white border-b border-gray-200 px-6 py-3">
@@ -294,6 +173,7 @@ export default function DashboardMainApp() {
                 </Button>
                 <Button
                   size="sm"
+                  onClick={() => router.push("/dashboard/my-decks/new-deck")}
                   className="gap-1 hidden sm:flex hover:bg-main hover:text-white bg-main/90 text-white cursor-pointer text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md"
                 >
                   <PlusCircle className="h-4 w-4" />
@@ -586,6 +466,6 @@ export default function DashboardMainApp() {
           </main>
         </div>
       </div>
-    </SidebarProvider>
+    
   );
 }

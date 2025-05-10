@@ -18,7 +18,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) router.push(`${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`)
+      if (session) router.push("/dashboard")
     })
   }, [router])
 
@@ -26,7 +26,7 @@ export default function LoginPage() {
     e.preventDefault()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) return setError(error.message)
-    router.push(`${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`)
+    router.push("/dashboard")
   }
   const handleGoogleLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
