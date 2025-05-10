@@ -25,6 +25,7 @@ import {
   Menu,
   X,
   ChevronLeft,
+  LogOut,
 } from "lucide-react";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/supabaseClient";
@@ -135,6 +136,11 @@ export default function DashboardLayout({
     };
     getUser();
   }, []);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+  };
 
   return (
     <SidebarProvider>
@@ -247,7 +253,10 @@ export default function DashboardLayout({
                   <DropdownMenuItem>Subscription</DropdownMenuItem>
                   <DropdownMenuItem>Settings</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Log out</DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Log out
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
