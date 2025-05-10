@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/supabaseClient"
 import OpenAI from 'openai'
-import pdfParse from 'pdf-parse'
+import { parsePDF } from '@/lib/pdf-parser'
 
 const supabase = createClient()
 const openai = new OpenAI({
@@ -40,9 +40,7 @@ export async function POST(req: Request) {
   let text = inputValue
   if (inputType === "pdf") {
     try {
-      const pdfBuffer = await fetch(inputValue!).then(r => r.arrayBuffer())
-      const pdfData = await pdfParse(Buffer.from(pdfBuffer))
-      text = pdfData.text
+      text = await parsePDF(inputValue)
       
       await supabase
         .from("decks")
