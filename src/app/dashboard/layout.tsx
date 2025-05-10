@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Brain,
@@ -27,6 +27,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import Image from "next/image";
+import { createClient } from "@/lib/supabase/supabaseClient";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -61,6 +62,8 @@ export default function DashboardLayout({
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("overview");
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const supabase = createClient();
 
   const navItems = [
     {
@@ -122,6 +125,16 @@ export default function DashboardLayout({
       icon: Settings,
     },
   ];
+
+  useEffect(() => {
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUser(user);
+      }
+    };
+    getUser();
+  }, []);
 
   return (
     <SidebarProvider>
@@ -200,14 +213,21 @@ export default function DashboardLayout({
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/placeholder-user.jpg" alt="User" />
+                  <AvatarImage 
+                    src={user?.user_metadata?.avatar_url || "/placeholder-user.jpg"} 
+                    alt={user?.user_metadata?.full_name || "User"} 
+                  />
                   <AvatarFallback className="bg-purple-100 text-purple-700">
-                    JD
+                    {user?.user_metadata?.full_name?.charAt(0) || "U"}
                   </AvatarFallback>
                 </Avatar>
                 <div className="text-sm">
-                  <div className="font-medium">Jessica Doe</div>
-                  <div className="text-xs text-gray-500">Premium Plan</div>
+                  <div className="font-medium">
+                    {user?.user_metadata?.full_name || "User"}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {user?.user_metadata?.subscription || "Free Plan"}
+                  </div>
                 </div>
               </div>
               <DropdownMenu>

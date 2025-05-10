@@ -307,7 +307,7 @@ export default function MyDecksPage() {
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full mb-6">
         <TabsList className="w-full grid grid-cols-2 sm:grid-cols-5 mb-2">
-          <TabsTrigger value="all" className="data-[state=active]:bg-main data-[state=active]:text-white cursor-pointer">
+          <TabsTrigger value="all" className="data-[state=active]:bg-purple-50">
             All Decks
           </TabsTrigger>
           <TabsTrigger value="favorites" className="data-[state=active]:bg-main data-[state=active]:text-white cursor-pointer">
@@ -376,7 +376,7 @@ export default function MyDecksPage() {
                       </div>
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full text-main/40 hover:bg-main hover:text-white cursor-pointer">
                             <MoreHorizontal className="h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
@@ -417,15 +417,15 @@ export default function MyDecksPage() {
                       </DropdownMenu>
                     </div>
 
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-3 cursor-pointer">
                       <Badge
                         className={`${colorMap[deck.color].light} ${colorMap[deck.color].text} ${
                           colorMap[deck.color].border
-                        } border`}
+                        } border cursor-pointer hover:bg-main hover:text-white transition-all duration-300`}
                       >
                         {deck.subject}
                       </Badge>
-                      <Badge variant="outline" className="bg-white">
+                      <Badge variant="outline" className="bg-white cursor-pointer hover:bg-main hover:text-white transition-all duration-300 border border-main/50 text-gray-500">
                         {deck.cards} cards
                       </Badge>
                     </div>
@@ -479,7 +479,7 @@ export default function MyDecksPage() {
                       </div>
                       <Button
                         size="sm"
-                        className="h-8 bg-purple-600 hover:bg-purple-700"
+                        className="h-8 bg-purple-600 hover:bg-purple-700 text-white cursor-pointer"
                         onClick={() => router.push(`/dashboard/decks/${deck.id}`)}
                       >
                         {deck.progress === 0 ? "Start" : "Continue"}
